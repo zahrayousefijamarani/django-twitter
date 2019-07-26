@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% load static %}
+    <title>Title</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'loan/signUp.css' %}">
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-default" style="background-color: #ff0066;">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><i class="fa fa-home"></i></a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{% url 'loan:signup' %}">Sign up <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li><a href="LoginPage.html">Login</a></li>
+                    <li><a href="{% url 'loan:index' %}">Loans</a></li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+
+<div class="container">
+    <form role="form" action="{% url 'loan:submit' %}" method="post" class="form-horizontal" name="myFrom">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label customLabel">Name</label>
+            <div class="col-sm-10">
+                <input name="name" type="text" class="form-control"
+                       placeholder="name">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputLastName" class="col-sm-2 control-label customLabel">Lastname</label>
+            <div class="col-sm-10">
+                <input name="lastname" type="text"
+                       class="form-control" placeholder="LastName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputFatherName" class="col-sm-2 control-label customLabel">FatherName</label>
+            <div class="col-sm-10">
+                <input name="fathername" type="text"
+                       class="form-control" placeholder="FatherName">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Id" class="col-sm-2 control-label customLabel">Id</label>
+            <div class="col-sm-10">
+                <input type="number" name="Id" class="form-control" placeholder="Id">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="NationalId" class="col-sm-2 control-label customLabel">NationalId</label>
+            <div class="col-sm-10">
+                <input name="nationalId" type="number"
+                       class="form-control" placeholder="NationalId">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputBirthday" class="col-sm-2 control-label customLabel">Birthday</label>
+            <div class="col-sm-10">
+                <input type="datetime" name="birthday" class="form-control" id="inputBirthday" placeholder="Birthday(YY-NN-DD)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputRegion" class="col-sm-2 control-label customLabel">Region</label>
+            <div class="col-sm-10">
+                <input name="region" type="text" class="form-control" placeholder="Region">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPhoneNumber" class="col-sm-2 control-label customLabel">PhoneNumber</label>
+            <div class="col-sm-10">
+                <input type="tel"
+                      name="phoneNumber"  class="form-control" placeholder="PhoneNumber">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputPassword" class="col-sm-2 control-label customLabel">Password</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control"
+                       name="password" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="radio">
+            <label class="customLabel">
+                <input type="radio" name="optionsRadios" id="inputMale" value="option1" checked>
+                Male
+            </label>
+        </div>
+        <div class="radio">
+            <label class="customLabel">
+                <input type="radio" name="optionsRadios" id="inputFemale" value="option2" checked>
+                Female
+            </label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                    <label class="customLabel">
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default">Sign in</button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>
