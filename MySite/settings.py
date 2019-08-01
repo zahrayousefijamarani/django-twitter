@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'awesomeTwitter.apps.AwesomeTwitterConfig',
     'loan.apps.LoanConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',

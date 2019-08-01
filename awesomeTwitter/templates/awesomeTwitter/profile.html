@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% extends './base.html' %}
+    {% load static %}
+    <title>{{ user.username }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'awesomeTwitter/profileCss.css' %}">
+</head>
+<body>
+{% block content %}
+    <div style="display: flex; flex-direction: row; ">
+        <h1 onclick="openForm()">{{ user.username }}</h1>
+
+        <div class="chat-popup" id="myForm">
+            <form action="{% url 'twitter:message' Id %}" class="form-container" method="post">
+                {%  csrf_token %}
+                <textarea input placeholder="Type message.." id="msg" name="msg" required value=""></textarea>
+
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+    </div>
+    <form action="">
+    {%  csrf_token %}
+        <div class="mainDiv">
+            {% for message in messages %}
+                <div class="card">
+                    <p style="color: #ff0066;">{{ message.text }}</p>
+
+                    <img onclick="deleteMessage({{ Id }},{{ message.id }})" class="resize" src="{% static 'awesomeTwitter/profile/delete-button.png' %}" alt="">
+
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+
+        function deleteMessage(pId,mId) {
+            window.location.href="{% url 'twitter:delete' 1 2  %}".replace('/1/2/',"/"+pId.toString()+"/"+mId.toString());
+        }
+    </script>
+{% endblock %}
+
+</body>
+</html>

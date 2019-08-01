@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% extends './base.html' %}
+    {% load static %}
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'awesomeTwitter/baseCss.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static  'awesomeTwitter/mainCss.css' %}">
+</head>
+<body>
+{% block content %}
+    <div class="mainDiv">
+        {% for user in users %}
+            <div class="card" style="margin:10px; background-image: url({{ user.background }});"
+                 onclick="go_twitter({{ user.id }})">
+                <a>
+                    <img class="resize" src="{% static  user.photo_string %}" alt="avatar">
+                </a>
+                <div style="display: inline-block">
+
+                    <h3 style="color: #ff0066; ">{{ user.username }}</h3>
+
+                </div>
+                <p style="color: white;">{{ user.desc }}</p>
+
+            </div>
+        {% endfor %}
+    </div>
+    <script>
+        function go_twitter(id) {
+                window.location.href = "{% url 'twitter:go_profile' 1 %}".replace(/1/,id.toString());
+        }
+    </script>
+{% endblock %}
+</body>
+</html>
