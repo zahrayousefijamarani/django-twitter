@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.urls import reverse
 
-from loan.models import Customer
+from loan.models import Customer, LoanInfo
 
 
 def loan(request):
@@ -15,7 +15,7 @@ def signup(request):
 
 def passmale(optionalRadio):
     if optionalRadio == 'option1':
-        return True;
+        return True
     return False
 
 
@@ -42,6 +42,28 @@ def submit(request):
 
 
 def homepage(request, id):
+    loans = LoanInfo.objects.all()
     return render(request, './loan/homepage.html', context={
+        'Id': id,
+    })
+
+
+def choose_loan(request, id):
+    loans = LoanInfo.objects.all()
+    return render(request, './loan/chooseLoan.html', context={
+        'Id': id,
+        'loans': loans
+    })
+
+
+def pay(request, id):
+    return render(request, './loan/pay.html', context={
         'Id': id
+    })
+
+
+def allocate(request, Id):
+
+    return render(request, './loan/Allocate.html', context={
+        'Id': Id
     })

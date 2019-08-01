@@ -1,0 +1,35 @@
+body {
+    background-image: url("images/background-2.jpg");
+}
+.container {
+
+    width:50%;
+}
+.customLabel{
+    color:deeppink;
+}
+.customButton{
+    background-color:deeppink;
+}
+h5{
+    color:red;
+}
+.rowDiv{
+    display:flex;
+    flex-direction:row;
+    width:900px;
+}
+.text-color{
+    color:brown;
+    border:2px solid #444;
+}
+.text-color2 {
+    color: chartreuse;
+}
+.green {
+    color: green;
+}
+
+.blue {
+    color: blue;
+}

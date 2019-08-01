@@ -4,9 +4,9 @@ from awesomeTwitter import views
 
 app_name = 'twitter'
 urlpatterns = [
+    path('/check',views.check,name='check'),
     path('', views.main_page, name='main'),
     path('profile/<int:Id>/', views.go_profile, name='go_profile'),
     path('profile/message/<int:Id>', views.messaging, name="message"),
-    path('profile/delete/<int:pId>/<int:mId>/',views.deleting,name="delete")
-
+    path('profile/delete/<int:pId>/<int:mId>/', views.deleting, name="delete"),
 ]

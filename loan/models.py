@@ -11,7 +11,6 @@ class Customer(models.Model):
     birthday = models.DateField(default='2000-11-11')
     male = models.BooleanField(default=False)
     region = models.CharField(max_length=200, default='Iran')
-    number = models.BigIntegerField(default=0)
 
 
 class LoanInfo(models.Model):
@@ -26,4 +25,4 @@ class LoanInfo(models.Model):
 
 
 class Loan(LoanInfo):
-    pass
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, default="null")

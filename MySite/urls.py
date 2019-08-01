@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from awesomeTwitter import views
+
 urlpatterns = [
-    path('twitter/',include('awesomeTwitter.urls')),
+    path('accounts/register/',views.sign_up,name='signup'),
+    path('accounts/login/', views.login, name='login'),
+    path('twitter/', include('awesomeTwitter.urls')),
     path('loan/', include('loan.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
