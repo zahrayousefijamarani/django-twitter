@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'twitter:check' %}" method="post">
+    {% csrf_token %}
+    <p>
+        <label>Username</label>
+        <input type="text" name="username">
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" name="password">
+    </p>
+    <button type="submit" value="Login">Login</button>
+</form>
+
+</body>
+</html>
