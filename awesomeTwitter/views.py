@@ -1,5 +1,3 @@
-from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
@@ -88,14 +86,8 @@ def deleting(request, pId, mId):
         'messages': person.message_set.all()
     })
 
-# def login_requested(request):
-#     if request.method == "POST":
-#         form = AuthenticationForm(request, data=request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data('username')
-#             password = form.cleaned_data('password')
-#             user = authenticate(username, password)
-#             if user in None:
-#                 login(request, user)
-#                 messages.info(request, "logged in")
-#     form = AuthenticationForm()
+
+@login_required
+def logout_func(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login', args=(())))
