@@ -41,10 +41,12 @@ def login_func(request):
 
 def createUser(request):
     try:
-        userName = request.POST('username')
-        userPass = request.POST('password')
+        userName = request.POST['username']
+        userPass = request.POST['password']
         user = User.objects.create(username=userName, password=userPass)
         user.save()
+        new_user = authenticate(username=userName, password=userPass)
+        login(request, new_user)
         return HttpResponseRedirect(reverse('twitter:main', args=()))
     except:
         return HttpResponseRedirect(reverse('signup', args=(())))
@@ -85,7 +87,6 @@ def deleting(request, pId, mId):
         'user': person,
         'messages': person.message_set.all()
     })
-
 
 # def login_requested(request):
 #     if request.method == "POST":
