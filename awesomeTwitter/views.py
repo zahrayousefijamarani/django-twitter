@@ -1,4 +1,6 @@
-from django.contrib.auth import authenticate
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -27,14 +29,13 @@ def check(request):
         if not user.is_active:
             return HttpResponse('It is not active')
         else:
-            return render(request, './awesomeTwitter/main.html', context={
-                'users': Person.objects.all()
-            })
+            login(request, user)
+            return HttpResponseRedirect(reverse('twitter:main', args=(())))
     else:
         return HttpResponseRedirect(reverse('login', args=(())))
 
 
-def login(request):
+def login_func(request):
     return render(request, './awesomeTwitter/login.html', context={})
 
 
@@ -84,3 +85,16 @@ def deleting(request, pId, mId):
         'user': person,
         'messages': person.message_set.all()
     })
+
+
+# def login_requested(request):
+#     if request.method == "POST":
+#         form = AuthenticationForm(request, data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data('username')
+#             password = form.cleaned_data('password')
+#             user = authenticate(username, password)
+#             if user in None:
+#                 login(request, user)
+#                 messages.info(request, "logged in")
+#     form = AuthenticationForm()

@@ -19,8 +19,8 @@ from django.urls import include, path
 from awesomeTwitter import views
 
 urlpatterns = [
-    path('accounts/register/',views.sign_up,name='signup'),
-    path('accounts/login/', views.login, name='login'),
+    path('accounts/register/', views.sign_up, name='signup'),
+    path('accounts/login/', views.login_func, name='login'),
     path('twitter/', include('awesomeTwitter.urls')),
     path('loan/', include('loan.urls')),
     path('polls/', include('polls.urls')),
